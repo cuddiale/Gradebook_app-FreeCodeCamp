@@ -1,10 +1,8 @@
 function getAverage(scores) {
   let sum = 0;
-
   for (const score of scores) {
     sum += score;
   }
-
   return sum / scores.length;
 }
 
@@ -24,9 +22,16 @@ function getGrade(score) {
   }
 }
 
-function hasPassingGrade(score) {
-  return getGrade(score) !== "F";
+function studentMsg(totalScores, studentScore) {
+  const average = getAverage(totalScores);
+  const grade = getGrade(studentScore);
+
+  if (grade !== "F") {
+    return `Class average: ${average}. Your grade: ${grade}. You passed the course.`;
+  } else {
+    return `Class average: ${average}. Your grade: ${grade}. You failed the course.`;
+  }
 }
 
-function studentMsg(totalScores, studentScore) {}
 console.log(studentMsg([92, 88, 12, 77, 57, 100, 67, 38, 97, 89], 37));
+console.log(studentMsg([56, 23, 89, 42, 75, 11, 68, 34, 91, 19], 100));
